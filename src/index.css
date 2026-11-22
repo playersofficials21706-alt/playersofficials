@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(96.8% 0.018 92);
+  --foreground: oklch(20% 0.03 260);
+  --card: oklch(99.3% 0.006 92);
+  --card-foreground: oklch(20% 0.03 260);
+  --popover: oklch(99.3% 0.006 92);
+  --popover-foreground: oklch(20% 0.03 260);
+  --primary: oklch(45% 0.12 155);
+  --primary-foreground: oklch(98.5% 0.01 92);
+  --secondary: oklch(93% 0.03 92);
+  --secondary-foreground: oklch(20% 0.03 260);
+  --muted: oklch(93.5% 0.02 92);
+  --muted-foreground: oklch(47% 0.03 260);
+  --accent: oklch(92% 0.19 118);
+  --accent-foreground: oklch(20% 0.03 260);
+  --destructive: oklch(58% 0.22 27);
+  --destructive-foreground: oklch(98.5% 0.01 92);
+  --border: oklch(20% 0.03 260);
+  --input: oklch(20% 0.03 260);
+  --ring: oklch(45% 0.12 155);
+  --ink: oklch(20% 0.03 260);
+  --ink-foreground: oklch(96.8% 0.018 92);
+  --volt: oklch(92% 0.19 118);
+  --volt-foreground: oklch(20% 0.03 260);
+  --pitch: oklch(45% 0.12 155);
+  --chart-1: oklch(45% 0.12 155);
+  --chart-2: oklch(82% 0.18 118);
+  --shadow-hard: 4px 4px 0 0 var(--ink);
+  --shadow-hard-sm: 2px 2px 0 0 var(--ink);
+  --shadow-hard-lg: 7px 7px 0 0 var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-volt: var(--volt);
+  --color-volt-foreground: var(--volt-foreground);
+  --color-pitch: var(--pitch);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--ink) 9%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.panel {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 2px solid var(--ink);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-hard);
+}
+
+.shadow-hard {
+  box-shadow: var(--shadow-hard);
+}
+
+.shadow-hard-sm {
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.shadow-hard-lg {
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.hover\:shadow-hard-lg:hover {
+  box-shadow: var(--shadow-hard-lg);
+}
+
+.stripe-volt {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--volt) 0 10px,
+    color-mix(in oklab, var(--volt) 70%, var(--card)) 10px 20px
+  );
+}
+
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--pitch) 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-dot {
+  animation: 1.6s ease-out infinite pulse-dot;
+}
+
+.animate-rise {
+  animation: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both rise;
+}

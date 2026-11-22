@@ -1,0 +1,6 @@
+{
+  "name": "PlayersQR",
+  "description": "Make a QR code and short link, change it anytime, and count every scan and unique visitor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
